@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useContext, useEffect } from "react";
 
-import Card from './UI/Card';
-import './Auth.css';
+import Card from "./UI/Card";
+import "./Auth.css";
+import { AuthContext } from "./context/AuthContext";
+import useFetch from "../hooks/fetch";
 
-const Auth = props => {
-  const loginHandler = () => {};
+const Auth = (props) => {
+  const authContext = useContext(AuthContext);
+
+  const [data] = useFetch()
+  console.log(data);
+
+  const loginHandler = () => {
+    authContext.login();
+  };
 
   return (
     <div className="auth">
